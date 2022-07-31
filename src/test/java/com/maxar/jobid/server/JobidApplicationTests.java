@@ -47,14 +47,14 @@ class JobidApplicationTests {
 		stopWatch.start();
 
 		logger.info("starting 2k");
-		for(int cnt=1; cnt !=2000; cnt++) {
+		for(int cnt=1; cnt !=21; cnt++) {
 			// invoke sync request
 			JobIdResponse res = restTemplate.getForObject(GetJobUri+cnt, JobIdResponse.class);
 			responses.add(res);
 		}
 		stopWatch.stop();
 		logger.info("finished 2k in: " + stopWatch.getTotalTimeMillis());
-		assertEquals(2000, responses.size());
+		assertEquals(20, responses.size());
 	}
 
 	@Test
@@ -64,13 +64,13 @@ class JobidApplicationTests {
 		stopWatch.start();
 
 		logger.info("starting async 2k: ");
-		for(int cnt=1; cnt !=2000; cnt++) {
+		for(int cnt=1; cnt !=21; cnt++) {
 			JobIdResponse res = restTemplate.getForObject(GetAsyncJobUri+cnt, JobIdResponse.class);
 			responses.add(res);
 		}
 		stopWatch.stop();
 		logger.info("finished async 2k in: " + stopWatch.getTotalTimeMillis());
-		assertEquals(2000, responses.size());
+		assertEquals(20, responses.size());
 	}
 
 	@Test
@@ -104,7 +104,7 @@ class JobidApplicationTests {
 	@Test
 	public void async_response_contains_listof_jobids_andUUid() throws Exception{
 		List<Integer> ids = new ArrayList();
-		for(int cnt=1; cnt !=2001; cnt++) {
+		for(int cnt=1; cnt !=21; cnt++) {
 			ids.add(cnt);
 		}
 
