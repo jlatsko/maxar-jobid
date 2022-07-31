@@ -104,7 +104,7 @@ class JobidApplicationTests {
 	@Test
 	public void async_response_contains_listof_jobids_andUUid() throws Exception{
 		List<Integer> ids = new ArrayList();
-		for(int cnt=1; cnt !=2001; cnt++) {
+		for(int cnt=1; cnt !=21; cnt++) {
 			ids.add(cnt);
 		}
 
