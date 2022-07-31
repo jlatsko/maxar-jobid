@@ -46,14 +46,14 @@ class JobidApplicationTests {
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 
-		logger.info("starting 2k");
+		logger.info("starting 20");
 		for(int cnt=1; cnt !=21; cnt++) {
 			// invoke sync request
 			JobIdResponse res = restTemplate.getForObject(GetJobUri+cnt, JobIdResponse.class);
 			responses.add(res);
 		}
 		stopWatch.stop();
-		logger.info("finished 2k in: " + stopWatch.getTotalTimeMillis());
+		logger.info("finished 20 in: " + stopWatch.getTotalTimeMillis());
 		assertEquals(20, responses.size());
 	}
 
@@ -63,13 +63,13 @@ class JobidApplicationTests {
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 
-		logger.info("starting async 2k: ");
+		logger.info("starting async 20: ");
 		for(int cnt=1; cnt !=21; cnt++) {
 			JobIdResponse res = restTemplate.getForObject(GetAsyncJobUri+cnt, JobIdResponse.class);
 			responses.add(res);
 		}
 		stopWatch.stop();
-		logger.info("finished async 2k in: " + stopWatch.getTotalTimeMillis());
+		logger.info("finished async 20 in: " + stopWatch.getTotalTimeMillis());
 		assertEquals(20, responses.size());
 	}
 
