@@ -47,36 +47,36 @@ class JobidApplicationTests {
     }
 
     @Test
-    void invoke_2k_requests() {
+    void invoke_20_requests() {
         List<JobIdResponse> responses = new ArrayList<>();
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        logger.info("starting 2k");
-        for (int cnt = 1; cnt != 2000; cnt++) {
+        logger.info("starting 20");
+        for (int cnt = 1; cnt != 21; cnt++) {
             // invoke sync request
             JobIdResponse res = restTemplate.getForObject(GetJobUri + cnt, JobIdResponse.class);
             responses.add(res);
         }
         stopWatch.stop();
         logger.info("finished 2k in: " + stopWatch.getTotalTimeMillis());
-        assertEquals(2000, responses.size());
+        assertEquals(20, responses.size());
     }
 
     @Test
-    void invoke_2k_async_requests() {
+    void invoke_20_async_requests() {
         List<JobIdResponse> responses = new ArrayList<>();
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        logger.info("starting async 2k: ");
-        for (int cnt = 1; cnt != 2000; cnt++) {
+        logger.info("starting async 20: ");
+        for (int cnt = 1; cnt != 21; cnt++) {
             JobIdResponse res = restTemplate.getForObject(GetAsyncJobUri + cnt, JobIdResponse.class);
             responses.add(res);
         }
         stopWatch.stop();
-        logger.info("finished async 2k in: " + stopWatch.getTotalTimeMillis());
-        assertEquals(2000, responses.size());
+        logger.info("finished async 20 in: " + stopWatch.getTotalTimeMillis());
+        assertEquals(20, responses.size());
     }
 
     @Test
